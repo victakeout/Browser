@@ -198,6 +198,7 @@ public void testDomFrameBreakOut() throws Exception {
 	   boolean acturl = solo.searchText("Your name is:");
 	   assertEquals("Sohu doesn't displayed", true, acturl);
 	   solo.sleep(1000);
+	    //test
 	 
 }   
   public void testDomWriteText() throws Exception{
