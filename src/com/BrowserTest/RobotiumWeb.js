@@ -2,7 +2,7 @@
  * Used by the web methods.
  * 
  * @author Renas Reda, renasreda@gmail.com
- * 
+ * test
  */
 
 function allWebElements() {
@@ -241,6 +241,43 @@ function CheckBox(id) {
 		var tagName = element.tagName;
 		var rect = element.getBoundingClientRect(); 
 		prompt(id + ';,' + text + ';,' + name + ";," + className + ";," + tagName + ";," + rect.left + ';,' + rect.top + ';,' + rect.width + ';,' + rect.height+ ';,' + ischecked); 
+	} 
+	finished(); 
+}
+
+function GetFrameItem(frameid,tagName) {
+   var doc = window.frames[frameid].document;
+   var elements = doc.getElementsByTagName(tagName);
+	for (var key in elements) {
+		if(elements != null){ 
+			try{
+			    var value = elements[key].value;
+				var id = elements[key].id;
+				var text = elements[key].textContent;
+				var name = elements[key].getAttribute('name');
+				var className = elements[key].className;
+				var tagName = elements[key].tagName;
+				var rect = elements[key].getBoundingClientRect(); 
+				if(rect.width > 0 && rect.height > 0 && rect.left >= 0 && rect.top >= 0){
+					prompt(id + ';,' + text + ';,' + name + ";," + className + ";," + tagName + ";," + rect.left + ';,' + rect.top + ';,' + rect.width + ';,' + rect.height + ';,' + value); 
+				}
+			}catch(ignored){}  
+			
+		}
+	}
+	finished();
+}
+
+function getFrameSrc(id) {
+	var element = document.getElementById(id);
+	if(element != null){ 
+		var text = element.textContent;
+		var name = element.getAttribute('name');
+		var className = element.className;
+		var tagName = element.tagName;
+		var src =element.src;
+		var rect = element.getBoundingClientRect(); 
+		prompt(id + ';,' + text + ';,' + name + ";," + className + ";," + tagName + ";," + rect.left + ';,' + rect.top + ';,' + rect.width + ';,' + rect.height + ';,' + src); 
 	} 
 	finished(); 
 }
