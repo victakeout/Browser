@@ -127,13 +127,16 @@ public class BrowserTest extends ActivityInstrumentationTestCase2 {
 	 public void testDomFrameChangeSrc() throws Exception {
 		  webview.loadUrl("http://123.71.192.55:8001/Browser/DOM/frame/source.html");
 		  solo.sleep(3000);
+		  solo.takeScreenshot("ChangeSrcBefore");
+		  solo.sleep(3000);
 		  solo.clickOnWebElement(new By.GetFrameItem("leftFrame","INPUT"));
 		  solo.sleep(20000);
-		  
-		  Log.e("test", "value2");
-		  String src = solo.getCurrentWebElements().get(0).getText();
-		  Log.e(src,"value2");
-		  Log.e("test1", "value2");
+		  solo.takeScreenshot("ChangeSrcAfter");
+		  boolean actual_result=false;
+		  actual_result = solo.imageCompare("ChangeSrcBefore.jpg", "ChangeSrcAfter.jpg",webview.getWidth()-310,300,90);
+		  solo.sleep(3000);
+		  assertEquals("Convert to upper false", true, actual_result);
+		 
 		  
 	} 
 public void testDomFrameBreakOut() throws Exception {
@@ -147,9 +150,9 @@ public void testDomFrameBreakOut() throws Exception {
 		  solo.takeScreenshot("breakout01");
 		  solo.sleep(3000);
 		  boolean actual_result=true;
-		  actual_result = solo.imageCompare("breakout.jpg", "breakout01.jpg",0,0,95);
+		  actual_result = solo.imageCompare("breakout.jpg", "breakout01.jpg",webview.getWidth()-310,300,95);
 		  solo.sleep(3000);
-		  assertEquals("Convert to upper false", false, actual_result);
+		  assertEquals("Convert to upper false", true, actual_result);
 		  
 		  
 	}
