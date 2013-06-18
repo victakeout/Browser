@@ -211,7 +211,7 @@ class WebUtils {
 
 	/**
 	 * Executes the given JavaScript function
-	 * 
+	 * test
 	 * @param function the function as a String
 	 * @return true if JavaScript function was executed
 	 */
